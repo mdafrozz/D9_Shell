@@ -1,20 +1,29 @@
 echo "******** Welcome to Employee Wage Computation Program ************"
 
-#UC1: check employee is present or absent
-#UC2: Calculate Employee Daily Wage
+#UC3 Add Part time Employee & Wage
 
-FULL_DAY_WORKING=8
 WAGE_PER_HR=20
+FULL_DAY_WORKING_HR=8
+HALF_DAY_WORKING_HR=4
 
 dailyWage=0
 
-attendance=$((RANDOM%2))
-echo "Random number: $attendance"
-if [[ $attendance == 0 ]]
-then
-	echo "Employee is absent"
-else
-	echo "Employee is present"
-	dailyWage=$(($FULL_DAY_WORKING*$WAGE_PER_HR))
-	echo "Daily wage: $dailyWage"
-fi
+attendance=$((RANDOM%3))
+case $attendance in
+	1)
+		echo "Employee is present"
+		empHrs=8
+		dailyWage=$(($FULL_DAY_WORKING_HR*$WAGE_PER_HR))
+		echo "Daily wage: $dailyWage"
+		;;
+	2)
+		echo "Employee is present"
+                empHrs=4
+                dailyWage=$(($HALF_DAY_WORKING_HR*$WAGE_PER_HR))
+                echo "Daily wage: $dailyWage"
+		;;
+	0)
+		echo "Employee is absent"
+		dailyWage=0
+		echo "Daily wage: $dailyWage"
+esac
