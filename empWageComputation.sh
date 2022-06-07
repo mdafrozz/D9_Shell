@@ -1,6 +1,6 @@
 echo "******** Welcome to Employee Wage Computation Program ************"
 
-#UC3 Add Part time Employee & Wage
+#UC5 Calculating Monthly Wages
 
 WAGE_PER_HR=20
 FULL_DAY_WORKING_HR=8
@@ -23,7 +23,7 @@ case $attendance in
                 echo "Daily wage: $dailyWage"
 		;;
 	0)
-		echo "Employee is absent"
+		echo "EMployee is absent"
 		dailyWage=0
 		echo "Daily wage: $dailyWage"
 esac
