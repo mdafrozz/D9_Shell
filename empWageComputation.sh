@@ -1,6 +1,7 @@
 echo "******** Welcome to Employee Wage Computation Program ************"
 
-#UC7 Refactor the Code to write a function to get work hours
+#UC8 STORE THE DAILY WAGE IN ARRAY
+
 WAGE_PER_HR=20
 FULL_DAY_WORKING_HR=8
 HALF_DAY_WORKING_HR=4
@@ -38,3 +39,4 @@ days=$(($days+1))
 done
 echo "Total working hours: $total_woking_hrs"
 echo "Days : $days"
+echo "Daily Wage: ${dailyWage[@]}"
