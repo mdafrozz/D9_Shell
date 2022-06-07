@@ -1,7 +1,6 @@
 echo "******** Welcome to Employee Wage Computation Program ************"
 
-#UC6 Calculate Wages till a condition of total working hours or days is reached for a month
-
+#UC7 Refactor the Code to write a function to get work hours
 WAGE_PER_HR=20
 FULL_DAY_WORKING_HR=8
 HALF_DAY_WORKING_HR=4
@@ -12,30 +11,30 @@ dailyWage=0
 total_woking_hrs=0
 days=0
 
+getHours() {
+	dailyHrs=$1
+	case $dailyHrs in
+		0)
+			dailyHrs=0
+			;;
+		1)
+			dailyHrs=$HALF_DAY_WORKING_HR
+			;;
+		2)
+			dailyHrs=$FULL_DAY_WORKING_HR
+			;;
+	esac
+	echo "$dailyHrs"
+}
 
 while [[ total_working_hrs -le 100 && days -le 20 ]]
 do
-attendance=$((RANDOM%3))
-case $attendance in
-	1)
-		echo "Employee is present"
-		#empHrs=$FULL_DAY_WORKING_HR
-		dailyWage=$(( $FULL_DAY_WORKING_HR * $WAGE_PER_HR ))
-		total_woking_hrs=$(( $total_woking_hrs + $FULL_DAY_WORKING_HR ))
-		echo "Daily wage: $dailyWage"
-		;;
-	2)	echo "Employee is present"
-		#empHrs=$HALF_DAY_WORKING_HR
-                dailyWage=$(( $HALF_DAY_WORKING_HR * $WAGE_PER_HR ))
-		total_woking_hrs=$(( $total_woking_hrs + $HALF_DAY_WORKING_HR ))
-                echo "Daily wage: $dailyWage"
-		;;
-	0)
-		echo "EMployee is absent"
-		dailyWage=0
-		echo "Daily wage: $dailyWage"
-		;;
-esac
+	attendance=$((RANDOM%3))
+	hrs=$(getHours $attendance)
+	dailyWage=$(( $hrs * $WAGE_PER_HR ))
+	total_woking_hrs=$(($total_woking_hrs+$hrs))
+
 days=$(($days+1))
 done
 echo "Total working hours: $total_woking_hrs"
+echo "Days : $days"
